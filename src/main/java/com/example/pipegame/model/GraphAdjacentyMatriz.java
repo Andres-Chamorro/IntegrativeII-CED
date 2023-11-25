@@ -332,17 +332,8 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
         return dist;
     }
 
-    /**
-     * The function primAL is a method in a Java class that returns a GraphAdjacencyList object using
-     * the Prim's algorithm, given a start vertex.
-     * 
-     * @param startVertex The startVertex parameter is the vertex from which the Prim's algorithm will
-     * start building the minimum spanning tree.
-     * @return The method is returning a GraphAdjacencyList object. However, in this implementation, it
-     * is returning null.
-     */
     @Override
-    public GraphAdjacentyList<T> primAL(Vertex<T> startVertex) {
+    public GraphAdjacentyList<T> primAL() {
         return null;
     }
 
@@ -356,18 +347,11 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
         return null;
     }
 
-    /**
-     * The function `primAM` implements Prim's algorithm to find the minimum spanning tree of a graph
-     * represented using an adjacency matrix.
-     * 
-     * @param startVertex The start vertex from which the Prim's algorithm will begin constructing the
-     * minimum spanning tree.
-     * @return The method `primAM` returns a `GraphAdjacentyMatriz<T>` object, which represents the
-     * minimum spanning tree (MST) of the original graph.
-     */
+
     @Override
-    public GraphAdjacentyMatriz<T> primAM(Vertex<T> startVertex) {
+    public GraphAdjacentyMatriz<T> primAM() {
         GraphAdjacentyMatriz<T> mstGraph = new GraphAdjacentyMatriz<>();
+        Vertex<T> startVertex = vertices.iterator().next();
 
         // initialize distance, color, and pred arrays
         for (Vertex<T> u : vertices) {
@@ -461,6 +445,10 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
         }
     }
 
+    public int[][] getAdjacencyMatrix() {
+        return adjacencyMatrix;
+    }
+
     /**
      * The function removes all edges connected to a given vertex in a graph represented by an
      * adjacency matrix.
@@ -546,6 +534,7 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
                 return root;
             }
         }
+
 
         public void union(T set1, T set2) {
             T root1 = find(set1);

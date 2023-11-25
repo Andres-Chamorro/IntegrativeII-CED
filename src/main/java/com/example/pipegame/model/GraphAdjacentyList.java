@@ -287,18 +287,11 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
         return dist;
     }
 
-    /**
-     * The `primAL` function implements Prim's algorithm to find the minimum spanning tree of a graph
-     * represented using an adjacency list.
-     * 
-     * @param startVertex The startVertex parameter is the vertex from which the Prim's algorithm will
-     * start building the minimum spanning tree.
-     * @return The method `primAL` returns a `GraphAdjacentyList<T>` object, which represents the
-     * minimum spanning tree (MST) of the original graph.
-     */
+
     @Override
-    public GraphAdjacentyList<T> primAL(Vertex<T> startVertex) {
+    public GraphAdjacentyList<T> primAL() {
         GraphAdjacentyList<T> mstGraph = new GraphAdjacentyList<>();
+        Vertex<T> startVertex = vertices.iterator().next();
 
         // Initialize key, color, and pred arrays
         for (Vertex<T> u : vertices) {
@@ -401,17 +394,8 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
         return minimumSpanningTree;
     }
 
-    /**
-     * The function primAM returns a GraphAdjacentyMatriz object using the Prim's algorithm starting
-     * from a given startVertex.
-     * 
-     * @param startVertex The startVertex parameter is the vertex from which the Prim's algorithm will
-     * start building the minimum spanning tree.
-     * @return The method is returning a GraphAdjacentyMatriz object. However, in this case, it is
-     * returning null.
-     */
     @Override
-    public GraphAdjacentyMatriz<T> primAM(Vertex<T> startVertex) {
+    public GraphAdjacentyMatriz<T> primAM() {
         return null;
     }
 
@@ -462,7 +446,7 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
      * @param destination The "destination" parameter is the vertex that we want to find an edge to.
      * @return The method is returning an object of type Edge<T> or null.
      */
-    private Edge<T> findEdge(Vertex<T> source, Vertex<T> destination) {
+    public Edge<T> findEdge(Vertex<T> source, Vertex<T> destination) {
         for (Edge<T> edge : edges) {
             if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
                 return edge;

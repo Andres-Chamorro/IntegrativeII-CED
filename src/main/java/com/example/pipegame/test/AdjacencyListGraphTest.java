@@ -1,8 +1,9 @@
 package com.example.pipegame.test;
-import com.example.pipegame.model.GraphAdjacentyList;
-import com.example.pipegame.model.GraphAdjacentyMatriz;
+
 import com.example.pipegame.model.Edge;
+import com.example.pipegame.model.GraphAdjacentyList;
 import com.example.pipegame.model.Vertex;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,13 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class AdjacencyListGraphTest {
 
     private GraphAdjacentyList<Integer> graph;
 
-    @BeforeEach
     public void setUp() {
         graph = new GraphAdjacentyList<>();
     }
@@ -53,7 +51,6 @@ public class AdjacencyListGraphTest {
         assertTrue(graph.getVertices().contains(vertex2));
     }
 
-
     @Test
     public void testFindVertexStandard() {
         // Escenario estándar
@@ -82,7 +79,6 @@ public class AdjacencyListGraphTest {
         Vertex<Integer> foundVertex = graph.findVertex(100);
         Assertions.assertNull(foundVertex);
     }
-
 
     @Test
     public void testRemoveVertexStandard() {
@@ -172,8 +168,6 @@ public class AdjacencyListGraphTest {
         assertEquals(5, edge2.getWeight());
     }
 
-
-
     @Test
     public void testRemoveEdgeStandard() {
         GraphAdjacentyList<String> graph = new GraphAdjacentyList<>();
@@ -216,7 +210,6 @@ public class AdjacencyListGraphTest {
         assertNull(graph.findEdge(vertexA, vertexB));
         assertNotNull(graph.findEdge(vertexB, vertexC));
     }
-
 
     @Test
     public void testDFSStandard() {
@@ -264,14 +257,14 @@ public class AdjacencyListGraphTest {
         graph.addVertex(vertex3);
 
         ArrayList<Vertex<Integer>> dfsOrder = graph.dfs(vertex1);
-        // Verificar que cada vértice esté en un componente distinto, por lo que el orden debe ser el mismo que el agregado.
+        // Verificar que cada vértice esté en un componente distinto, por lo que el
+        // orden debe ser el mismo que el agregado.
         List<Integer> expectedOrder = Arrays.asList(1, 2, 3);
 
         for (int i = 0; i < dfsOrder.size(); i++) {
             assertEquals(expectedOrder.get(i), dfsOrder.get(i).getData());
         }
     }
-
 
     @Test
     public void testBFSStandard() {
@@ -324,7 +317,8 @@ public class AdjacencyListGraphTest {
         graph.addVertex(vertex3);
 
         ArrayList<Vertex<Integer>> bfsOrder = graph.bfs(vertex1);
-        // Verificar que cada vértice esté en un componente distinto, por lo que el orden debe ser el mismo que el agregado.
+        // Verificar que cada vértice esté en un componente distinto, por lo que el
+        // orden debe ser el mismo que el agregado.
         List<Integer> expectedOrder = Arrays.asList(1, 2, 3);
 
         for (int i = 0; i < bfsOrder.size(); i++) {
@@ -436,7 +430,6 @@ public class AdjacencyListGraphTest {
         assertEquals(0, shortestPaths.length);
     }
 
-
     @Test
     public void testFloydWarshallInterestingCase() {
         // Interesting case: Graph with negative cycle
@@ -494,8 +487,6 @@ public class AdjacencyListGraphTest {
         assertEquals(2, countEdges(mstGraph));
     }
 
-
-
     @Test
     public void testPrimEdgeCases() {
 
@@ -515,10 +506,6 @@ public class AdjacencyListGraphTest {
         assertEquals(2, mstGraph.getVertices().size());
         assertEquals(1, countEdges(mstGraph)); // El MST tendrá un solo borde en este caso
     }
-
-
-
-
 
     @Test
     public void testPrimInterestingCase() {
@@ -580,13 +567,13 @@ public class AdjacencyListGraphTest {
         // Arrange
         GraphAdjacentyList<String> graph = new GraphAdjacentyList<>();
 
-
         // Act
         GraphAdjacentyList<String> minimumSpanningTree = graph.kruskalAL();
 
         // Assert
         assertNotNull(minimumSpanningTree);
-        assertEquals(0, minimumSpanningTree.getVertices().size()); // Empty graph should result in an MST with no vertices
+        assertEquals(0, minimumSpanningTree.getVertices().size()); // Empty graph should result in an MST with no
+                                                                   // vertices
         assertEquals(0, countEdges(minimumSpanningTree)); // Empty graph should result in an MST with no edges
     }
 

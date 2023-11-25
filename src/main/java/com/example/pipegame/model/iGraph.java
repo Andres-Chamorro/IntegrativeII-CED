@@ -21,11 +21,11 @@ public interface IGraph<T> {
 
     int[][] floydWarshall();
 
-    GraphAdjacentyList<T> primAL(Vertex<T> startVertex);
+    GraphAdjacentyList<T> primAL();
 
     GraphAdjacentyList<T> kruskalAL();
 
-    GraphAdjacentyMatriz<T> primAM(Vertex<T> startVertex);
+    GraphAdjacentyMatriz<T> primAM();
 
     GraphAdjacentyMatriz<T> kruskalAM();
 
