@@ -13,6 +13,10 @@ public class ApplicationController {
     @FXML
     private Label vText;
 
+    /**
+     * The PlayButton function checks for the selected graph type and opens the game view window if a
+     * valid mode is selected.
+     */
     @FXML
     protected void PlayButton() {
         int mode = askForGraphType();
@@ -23,6 +27,14 @@ public class ApplicationController {
         }
     }
 
+    /**
+     * The function asks the user to select a graph type (either "Adjacency List" or "Adjacency
+     * Matrix") and returns an integer value representing the selected option.
+     * 
+     * @return The method is returning an integer value. The value returned depends on the selected
+     * option in the choice dialog. If "Adjacency List" is selected, it returns 1. If "Adjacency
+     * Matrix" is selected, it returns 2. If neither option is selected, it returns 0.
+     */
     private int askForGraphType() {
         ArrayList<String> options = new ArrayList<>(List.of("Adjacency List", "Adjacency Matrix"));
         String selectedOption = ApplicationMain.showChoiceDialog("Confirmation", "Set graph type", "Select an option:", options);

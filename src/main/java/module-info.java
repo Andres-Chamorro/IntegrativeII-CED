@@ -1,6 +1,7 @@
 module com.example.pipegame {
     requires javafx.controls;
     requires javafx.fxml;
+    requires junit;
 
 
     opens com.example.pipegame to javafx.fxml;
