@@ -1,4 +1,5 @@
 package com.example.pipegame.model;
+import com.example.exception.GraphException;
 
 import java.util.*;
 
@@ -51,9 +52,9 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
      * stored in the vertex.
      */
     @Override
-    public void removeVertex(Vertex<T> vertex) {
+    public void removeVertex(Vertex<T> vertex) throws GraphException{
         if (!vertices.contains(vertex)) {
-            throw new IllegalArgumentException("The vertex is not in the graph.");
+            throw new GraphException("The vertex is not in the graph.");
         }
         // delete the vertex and all associated edges
         vertices.remove(vertex);
@@ -75,9 +76,9 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
      * using that edge in certain algorithms, such as shortest path algorithms.
      */
     @Override
-    public void addEdge(Vertex<T> source, Vertex<T> destination, int weight) {
+    public void addEdge(Vertex<T> source, Vertex<T> destination, int weight) throws GraphException{
         if (!vertices.contains(source) || !vertices.contains(destination)) {
-            throw new IllegalArgumentException("The vertices must be in the graph.");
+            throw new GraphException("The vertices must be in the graph.");
         }
         source.addNeighbor(destination);
         destination.addNeighbor(source);
@@ -94,9 +95,9 @@ public class GraphAdjacentyList<T> implements IGraph<T> {
      * the edge to be removed.
      */
     @Override
-    public void removeEdge(Vertex<T> source, Vertex<T> destination) {
+    public void removeEdge(Vertex<T> source, Vertex<T> destination) throws GraphException{
         if (!vertices.contains(source) || !vertices.contains(destination)) {
-            throw new IllegalArgumentException("The vertices must be in the graph.");
+            throw new GraphException("The vertices must be in the graph.");
         }
         source.removeNeighbor(destination);
         destination.removeNeighbor(source);

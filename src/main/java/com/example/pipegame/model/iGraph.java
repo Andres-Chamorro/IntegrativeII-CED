@@ -34,8 +34,5 @@ public interface IGraph<T> {
     ArrayList<Vertex<T>> getVertices();
 
     Vertex<T> getVertex(T keyVertex);
-    	
-    void deleteVertex(T keyVertex);
-
 
 }

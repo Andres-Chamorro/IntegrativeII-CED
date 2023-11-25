@@ -1,4 +1,5 @@
 package com.example.pipegame.model;
+import com.example.exception.GraphException;
 
 import java.util.*;
 
@@ -60,9 +61,9 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
     * the vertex. It represents the vertex that needs to be removed from the graph.
     */
     @Override
-    public void removeVertex(Vertex<T> vertex) {
+    public void removeVertex(Vertex<T> vertex) throws GraphException{
         if (!vertices.contains(vertex)) {
-            throw new IllegalArgumentException("The vertex is not in the graph.");
+            throw new GraphException("The vertex is not in the graph.");
         }
 
         int vertexIndex = vertices.indexOf(vertex);
@@ -98,9 +99,9 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
      * distance, or any other measure of the connection between the two vertices.
      */
     @Override
-    public void addEdge(Vertex<T> source, Vertex<T> destination, int weight) {
+    public void addEdge(Vertex<T> source, Vertex<T> destination, int weight) throws GraphException {
         if (!vertices.contains(source) || !vertices.contains(destination)) {
-            throw new IllegalArgumentException("The vertices must be in the graph.");
+            throw new GraphException("The vertices must be in the graph.");
         }
 
         int sourceIndex = vertices.indexOf(source);
@@ -120,9 +121,9 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
      * towards. In other words, it is the vertex that the edge is connecting to from the source vertex.
      */
     @Override
-    public void removeEdge(Vertex<T> source, Vertex<T> destination) {
+    public void removeEdge(Vertex<T> source, Vertex<T> destination) throws GraphException {
         if (!vertices.contains(source) || !vertices.contains(destination)) {
-            throw new IllegalArgumentException("The vertices must be in the graph.");
+            throw new GraphException("The vertices must be in the graph.");
         }
 
         int sourceIndex = vertices.indexOf(source);
@@ -572,19 +573,6 @@ public class GraphAdjacentyMatriz<T> implements IGraph<T> {
             }
         }
         return null;
-    }
-
-    /**
-     * The function deletes a vertex from a graph if it exists.
-     * 
-     * @param keyVertex The key value of the vertex that needs to be deleted.
-     */
-    @Override
-    public void deleteVertex(T keyVertex) {
-        Vertex<T> vertex = getVertex(keyVertex);
-        if (vertex != null) {
-            removeVertex(vertex);
-        }
     }
 
 }

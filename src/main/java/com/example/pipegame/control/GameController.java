@@ -139,7 +139,7 @@ public class GameController implements Initializable {
                     graph.addVertex(vertex);
                 } else {
                     Rectangle rectangle = new Rectangle(board.getWidth() / board.getColumnCount(), board.getHeight() / board.getRowCount());
-                    rectangle.setFill(Color.BLACK);
+                    rectangle.setFill(Color.GREEN);
                     board.add(rectangle, col, row);
                 }
             }
@@ -614,7 +614,7 @@ public class GameController implements Initializable {
             int columnIndex = vertex.getData().getCol();
             int rowIndex = vertex.getData().getRow();
             Rectangle rectangle = new Rectangle(board.getWidth() / board.getColumnCount(), board.getHeight() / board.getRowCount());
-            rectangle.setFill(Color.YELLOW);
+            rectangle.setFill(Color.WHITE);
             board.add(rectangle, columnIndex, rowIndex);
         }
     }
